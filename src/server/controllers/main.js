@@ -1,7 +1,5 @@
 const recipeDb = require('../schemas/schema')
 
-
-
 module.exports = {
     uploadRecipe: async (req, res) => {
         let images = []
@@ -16,7 +14,7 @@ module.exports = {
         req.body.preparation.map(prep => {
             preparation.push(prep)
         })
-        let newRecipe = new recipeDb.recipeSchema
+        let newRecipe = new recipeDb
         newRecipe.title = req.body.title[0]
         newRecipe.images = images
         newRecipe.ingredients = ingredients
@@ -28,6 +26,37 @@ module.exports = {
             console.log(e)
         })
     },
+    showAllRecipes: async (req, res) => {
+        let recipe = await recipeDb.find()
+        console.log(req.body)
+        res.send(recipe)
+        console.log(recipe)
+    },
+    findRecipe: async (req, res) => {
+        console.log(req.params.id)
+        let recipe = await recipeDb.findById(req.params.id)
+        console.log(recipe)
+        res.send(recipe)
+    },
+    uploadReview: async (req, res) => {
+        console.log(req.body)
+        await recipeDb.findByIdAndUpdate({_id: req.body.recipeId},
+            {
+                $push: { review: req.body},
+            },
+            {returnOriginal: false})
+            .then(() => {
+                res.send({error: false, msg: "Review add successful"})
 
-
+            }).catch(e => {
+                console.log(e)
+                res.send({error: true, msg: "Wrong data", e})
+            })
+    },
+    findreview: async (req, res) => {
+        console.log(req.params.id)
+        let recipe = await recipeDb.findById(req.params.id)
+        console.log(recipe)
+        res.send(recipe)
+    }
 }

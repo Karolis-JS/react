@@ -18,9 +18,13 @@ const recipesSchema = new Schema({
     preparation: {
         type: Array,
         required: true
-    }
+    },
+    review: {
+        type: Array,
+        required: false
+    },
 })
 
 const recipeSchema = mongoose.model("recipesModel", recipesSchema)
 
-module.exports = {recipeSchema}
+module.exports = recipeSchema

@@ -1,4 +1,4 @@
-
+const validator = require('email-validator')
 module.exports = {
     checkRecipe: async (req, res, next) => {
         console.log(req.body)
@@ -17,6 +17,20 @@ module.exports = {
         }
         if (req.body.preparation.length < 1) {
             return error(true, 'You forgot to add preparation steps!')
+        }
+        next()
+    },
+    checkReview: async (req, res, next) => {
+        console.log(req.body)
+        let validEmail = validator.validate(req.body.email)
+        if (req.body.comment.length > 50 || req.body.comment.length < 5) {
+            return res.send({error: true, message: 'Review must be 5-50 characters long'})
+        }
+        if (validEmail) {
+            return next()
+        }
+        if (!validEmail) {
+            return res.send({error: true, message: 'Invalid email'})
         }
         next()
     },

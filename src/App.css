@@ -1,10 +1,26 @@
 .App {
+  width: 100%;
   display: flex;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
 }
 .mt-15{
   margin-top: 15px;
+}
+.w-100{
+  width: 100%;
+}
+
+.d-flex{
+  display: flex;
+}
+.overflow-h{
+  overflow: hidden;
+}
+#addRecipe{
+  margin-top: 30px;
+  background-color: #b55656;
 }
 .uploadMain{
   width: 100%;
@@ -15,9 +31,12 @@
   width: 50%;
   box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
   padding: 20px;
+  background-color: #f5e9ee;
 }
 .previewField img{
-  width: 100px;
+  width: 180px;
+  margin: 5px;
+
 }
 .upload{
   width: 50%;
@@ -25,7 +44,239 @@
   flex-direction: column;
   box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
   padding: 20px;
+  background-color: #bee0e0;
+}
+.upload button{
+  padding: 5px;
+  margin: 3px;
+  background-color: #3c6666;
+  color: white;
+  cursor: pointer;
+}
+.upload button:hover{
+  background-color: #f5e9ee;
+  color: black;
 }
 .error{
   color: red;
+}
+.nav{
+  text-align: right;
+  width: 97.3%;
+  padding: 20px;
+  background-color: #3c6666;
+  overflow: hidden;
+}
+.nav a{
+  margin-right: 100px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+.nav a:hover{
+  text-decoration: underline;
+  color: yellow;
+}
+.recipeCard{
+  width: 300px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #c9d7d7;
+  margin: 10px;
+  box-shadow: 3px 3px 12px 0 rgba(0,0,0,0.75);
+}
+.moreBtn{
+  background-color: #3c6666;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.moreBtn:hover{
+  background-color: #5b9696;
+  border-radius: 10px;
+}
+.singleRecipeCard{
+  margin: 20px;
+  padding: 20px;
+  width: 95%;
+  height: auto;
+  display: flex;
+}
+.singleRecipeCard img{
+  width: 80%;
+  margin-right: 20px;
+
+}
+.singleRecipeInfo{
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
+.comments{
+  padding: 10px 50px 50px 50px;
+  margin: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.comments input{
+  padding: 10px;
+  margin: 10px;
+  background-color: #b3c8c8;
+}
+.comments textarea{
+  padding: 10px;
+  margin: 10px;
+  height: 200px;
+}
+
+.addReviewBtn{
+  padding: 10px;
+  background-color: #b55656;
+  margin: 20px;
+  cursor: pointer;
+}
+.addReviewBtn:hover{
+  background-color: #752222;
+  color: white;
+}
+.reviewMain{
+  display: flex;
+  background-color: #dbe7e7;
+}
+.usersReview{
+  width: 40%;
+  padding: 10px;
+}
+.usersReview h3, p{
+  margin: 0;
+}
+.userCom{
+  width: 100%;
+  text-align: left;
+  margin: 10px;
+  box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.75);
+  padding: 10px;
+}
+.star{
+  margin: 0;
+  font-size: 25px;
+  color: yellow;
+}
+.rateInfo{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.reviewRate{
+  margin-left: 10px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: yellow;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px yellow;
+}
+
+.anim{
+  animation-name: fade;
+  animation-duration: 0.7s;
+}
+
+@keyframes fade {
+  0% {
+    transform: rotate(10deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms linear;
+
 }

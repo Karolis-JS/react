@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 
 
-function Upload(props) {
+function Upload() {
 
     const titleRef = useRef()
     const imageRef = useRef()
@@ -9,7 +9,6 @@ function Upload(props) {
     const quantityRef = useRef()
     const preparationRef = useRef()
 
-    const [prod, setProd] = useState({})
 
     const [title, setTitle] = useState('')
     const [images, setImages] = useState([])
@@ -43,7 +42,6 @@ function Upload(props) {
             value: ingredientsRef.current.value,
             quantity: quantityRef.current.value
         }
-        console.log(ingredientsRef.current.value)
         setIngredients([...ingredients, ingrediantsObj] )
         ingredientsRef.current.value = ""
         quantityRef.current.value = ''
@@ -51,18 +49,11 @@ function Upload(props) {
     }
 
     function addPreparation(){
-        console.log(preparationRef.current.value)
         setPreparation([...preparation, preparationRef.current.value])
-        setProd([{title, images, ingredients, preparation}])
         preparationRef.current.value = ""
-        console.log(ingredients)
-
     }
 
     function addRecipie(){
-        // setProd([{title, images, ingredients, preparation}])
-        console.log(prod)
-
         fetch('http://localhost:8080/upload', {
             method: 'POST',
             mode: 'cors',
@@ -109,7 +100,7 @@ function Upload(props) {
                     <input ref={preparationRef} placeholder="Preparation method"/>
                     <button onClick={addPreparation}>Add Preparation Step</button>
 
-                    <button onClick={addRecipie} className="mt-15">Add Recipe</button>
+                    <button onClick={addRecipie} id="addRecipe">Add Recipe</button>
                     <h3 className="error">{error}</h3>
                 </div>
 
