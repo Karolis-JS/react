@@ -23,23 +23,17 @@ module.exports = {
             res.send({error: false, message: 'Recipe uploaded!'})
         }).catch(e => {
             res.send({error: true, message: e})
-            console.log(e)
         })
     },
     showAllRecipes: async (req, res) => {
         let recipe = await recipeDb.find()
-        console.log(req.body)
         res.send(recipe)
-        console.log(recipe)
     },
     findRecipe: async (req, res) => {
-        console.log(req.params.id)
         let recipe = await recipeDb.findById(req.params.id)
-        console.log(recipe)
         res.send(recipe)
     },
     uploadReview: async (req, res) => {
-        console.log(req.body)
         await recipeDb.findByIdAndUpdate({_id: req.body.recipeId},
             {
                 $push: { review: req.body},
@@ -49,14 +43,11 @@ module.exports = {
                 res.send({error: false, msg: "Review add successful"})
 
             }).catch(e => {
-                console.log(e)
                 res.send({error: true, msg: "Wrong data", e})
             })
     },
     findreview: async (req, res) => {
-        console.log(req.params.id)
         let recipe = await recipeDb.findById(req.params.id)
-        console.log(recipe)
         res.send(recipe)
     }
 }

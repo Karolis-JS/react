@@ -2,7 +2,7 @@ import {useRef, useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 
 
-function Rewiev({addReviev}) {
+function Review({addReview}) {
     const { id } = useParams()
 
     const emailRef = useRef()
@@ -13,8 +13,6 @@ function Rewiev({addReviev}) {
     const [rate, setRate] = useState(0)
     const [comment, setComment] = useState(0)
     const [error, setError] = useState([])
-
-
 
     function submit(){
         let review = {
@@ -32,7 +30,6 @@ function Rewiev({addReviev}) {
             body: JSON.stringify(review)
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
                 setError(data)
                 if (!data.error){
                     emailRef.current.value = ""
@@ -46,8 +43,7 @@ function Rewiev({addReviev}) {
         fetch('http://localhost:8080/getreview/' + id)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                addReviev(data)
+                addReview(data)
             })
     }, [error])
 
@@ -96,4 +92,4 @@ function Rewiev({addReviev}) {
     );
 }
 
-export default Rewiev;
+export default Review;

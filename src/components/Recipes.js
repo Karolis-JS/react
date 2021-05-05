@@ -20,7 +20,7 @@ function Recipes() {
     }, [])
 
     return (
-        <div className="d-flex mt-15">
+        <div className="d-flex mt-15 just-center">
             {allRecipe.map((item, index) =>
             <div className="recipeCard" key={item._id}>
                 <h1>{item.title}</h1>

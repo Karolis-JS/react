@@ -11,25 +11,36 @@
 .w-100{
   width: 100%;
 }
+.max-h{
+  max-height: 91vh;
+}
 
 .d-flex{
   display: flex;
 }
-.overflow-h{
-  overflow: hidden;
+
+.just-center{
+  justify-content: center;
 }
+.homeImg{
+  display: flex;
+  position: sticky;
+  width: 100%;
+  max-height: 91vh;
+}
+
 #addRecipe{
   margin-top: 30px;
   background-color: #b55656;
 }
 .uploadMain{
-  width: 100%;
+  width: 98%;
   display: flex;
   margin: 20px;
 }
 .previewField{
-  width: 50%;
-  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+  width: 45%;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.75);
   padding: 20px;
   background-color: #f5e9ee;
 }
@@ -42,7 +53,7 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.75);
   padding: 20px;
   background-color: #bee0e0;
 }
@@ -61,14 +72,15 @@
   color: red;
 }
 .nav{
-  text-align: right;
-  width: 97.3%;
+  display: flex;
+  justify-content: space-between;
+  width: 97.4%;
   padding: 20px;
-  background-color: #3c6666;
-  overflow: hidden;
+  background-color: #212C32;
+
 }
 .nav a{
-  margin-right: 100px;
+  margin: 0 100px 0 100px;
   text-decoration: none;
   color: white;
   cursor: pointer;
@@ -83,20 +95,22 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: #c9d7d7;
+  background-color: #b8cce2;
   margin: 10px;
   box-shadow: 3px 3px 12px 0 rgba(0,0,0,0.75);
 }
+
 .moreBtn{
-  background-color: #3c6666;
+  background-color: #212C32;
   color: white;
   padding: 10px;
   margin-top: 15px;
   cursor: pointer;
+  border-radius: 15px 0 15px 0;
 }
 .moreBtn:hover{
-  background-color: #5b9696;
-  border-radius: 10px;
+  background-color: #752222;
+  border-radius: 0 15px 0 15px;
 }
 .singleRecipeCard{
   margin: 20px;
@@ -117,7 +131,7 @@
 }
 .comments{
   padding: 10px 50px 50px 50px;
-  margin: 20px;
+  margin: 10px 20px;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -132,16 +146,18 @@
   margin: 10px;
   height: 200px;
 }
-
 .addReviewBtn{
   padding: 10px;
-  background-color: #b55656;
-  margin: 20px;
+  background-color: #212C32;
+  margin: 20px 0 0 0;
   cursor: pointer;
+  color: white;
+  border-radius: 15px 0 15px 0;
 }
 .addReviewBtn:hover{
   background-color: #752222;
   color: white;
+  border-radius: 0 15px 0 15px;
 }
 .reviewMain{
   display: flex;
@@ -150,16 +166,24 @@
 .usersReview{
   width: 40%;
   padding: 10px;
+  margin: 10px 0 0 0;
+  height: 500px;
+
+}
+.usersReviewMain{
+  max-height: 430px;
+  overflow: auto;
 }
 .usersReview h3, p{
-  margin: 0;
+  margin:0;
 }
 .userCom{
-  width: 100%;
+  width: 90%;
   text-align: left;
-  margin: 10px;
-  box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.75);
+  margin: 20px 10px 10px 10px;
+  box-shadow: 3px 3px 12px 0 rgba(0,0,0,0.75);
   padding: 10px;
+  border-radius: 0 0 20px 0;
 }
 .star{
   margin: 0;
@@ -279,4 +303,18 @@
   opacity: 0;
   transition: opacity 300ms linear;
 
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(33,44,50,0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(33,44,50,0.5);
 }

@@ -3,21 +3,21 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    link
 } from "react-router-dom";
+import {
+    TransitionGroup,
+    CSSTransition
+} from "react-transition-group";
 
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import Upload from "./components/Upload";
 import Home from "./components/Home";
 import Recipes from "./components/Recipes";
 import Navbar from "./components/Navbar";
 import SingleRecipe from "./components/SingleRecipe";
-import Rewiev from "./components/Rewiev";
+import Review from "./components/Rewiev";
 import UsersReview from "./components/UsersReview";
-import {
-    TransitionGroup,
-    CSSTransition
-} from "react-transition-group";
+
 
 function App() {
 
@@ -51,7 +51,7 @@ function App() {
                                 <Route path="/recipe/:id">
                                     <SingleRecipe/>
                                     <div className="reviewMain">
-                                        <Rewiev addReviev={(e) => setReviews([e])}/>
+                                        <Review addReview={(e) => setReviews([e])}/>
                                         <UsersReview reviews={review}/>
                                     </div>
                                 </Route>
