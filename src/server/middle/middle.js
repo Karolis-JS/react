@@ -1,10 +1,11 @@
 const validator = require('email-validator')
 module.exports = {
     checkRecipe: async (req, res, next) => {
+        console.log(req.body)
         function error(status, message) {
             return res.send({error: status, message: message})
         }
-        if (req.body.title[0].length < 5) {
+        if (req.body.title.length < 5) {
             return error(true, 'Title is too short!')
         }
         if (req.body.images.length < 1) {

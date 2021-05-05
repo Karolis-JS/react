@@ -17,6 +17,7 @@ import Navbar from "./components/Navbar";
 import SingleRecipe from "./components/SingleRecipe";
 import Review from "./components/Rewiev";
 import UsersReview from "./components/UsersReview";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -34,10 +35,12 @@ function App() {
 
                 <Route path="/upload">
                     <Upload/>
+                    <Footer />
                 </Route>
 
                 <Route path="/allrecipes">
                     <Recipes/>
+                    <Footer />
                 </Route>
 
                 <Route render={({location}) => (

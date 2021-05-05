@@ -23,18 +23,10 @@ function Upload() {
         preparation: preparation
     }
 
-    function addTitle(){
-        console.log(titleRef.current.value)
-        setTitle([titleRef.current.value])
-        titleRef.current.value = ""
-
-    }
-
     function addImage(){
         console.log(imageRef.current.value)
         setImages([...images, imageRef.current.value])
         imageRef.current.value = ""
-
     }
 
     function addIngredients(){
@@ -45,7 +37,6 @@ function Upload() {
         setIngredients([...ingredients, ingrediantsObj] )
         ingredientsRef.current.value = ""
         quantityRef.current.value = ''
-
     }
 
     function addPreparation(){
@@ -53,7 +44,7 @@ function Upload() {
         preparationRef.current.value = ""
     }
 
-    function addRecipie(){
+    function addRecipe(){
         fetch('http://localhost:8080/upload', {
             method: 'POST',
             mode: 'cors',
@@ -69,12 +60,12 @@ function Upload() {
                 }
                 if (!data.error) {
                     setTitle('')
+                    titleRef.current.value = ""
                     setImages([])
                     setIngredients([])
                     setPreparation([])
                     return setError(data.message)
                 }
-
             })
     }
 
@@ -84,40 +75,38 @@ function Upload() {
 
                 <div className='upload'>
                     <label className="mt-15">Title</label>
-                    <input ref={titleRef} type="text" placeholder='Title'/>
-                    <button onClick={addTitle}>Add Title</button>
+                    <input ref={titleRef} onChange={(e) => setTitle(e.target.value)} type="text" placeholder='Enter tittle'/>
 
                     <label className="mt-15">Image</label>
-                    <input ref={imageRef} placeholder="Image"/>
+                    <input ref={imageRef} placeholder="Enter image url"/>
                     <button onClick={addImage}>Add Image</button>
 
                     <label className="mt-15">Ingredients</label>
-                    <input ref={ingredientsRef} placeholder="Ingredients"/>
-                    <input ref={quantityRef} placeholder="Quantity"/>
+                    <div className="ingredientsDiv">
+                        <input ref={ingredientsRef} placeholder="Enter ingredient"/>
+                        <input ref={quantityRef} placeholder="Enter ingredient quantity"/>
+                    </div>
+
                     <button onClick={addIngredients}>Add Ingredients</button>
 
                     <label className="mt-15">Preparation method</label>
-                    <input ref={preparationRef} placeholder="Preparation method"/>
+                    <input ref={preparationRef} placeholder="Enter preparation step"/>
                     <button onClick={addPreparation}>Add Preparation Step</button>
 
-                    <button onClick={addRecipie} id="addRecipe">Add Recipe</button>
+                    <button onClick={addRecipe} id="addRecipe">Add Recipe</button>
                     <h3 className="error">{error}</h3>
                 </div>
 
-            <div className='previewField'>
+            <div className='previewField'>Preview window
 
-                <h1>{title}</h1>
+                <h2>{title}</h2>
 
-                <h4>Image:</h4>
                 {images.map((img, index) =>
                     <img key={index} src={img} alt=""/>)}
-
                 <ol>
-                    <h4>Ingredients:</h4>
                     {ingredients.map((data, index) => <li key={index}>{data.value}, {data.quantity}</li>)}
                 </ol>
                 <ol>
-                    <h4>Preparation:</h4>
                     {preparation.map((data, index) => <li key={index}>{data}</li>)}
                 </ol>
 

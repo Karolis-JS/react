@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 .App {
   width: 100%;
   display: flex;
@@ -14,32 +15,107 @@
 .max-h{
   max-height: 91vh;
 }
-
+.h-100{
+  height: 100vh;
+}
+.p-15{
+  padding: 15px;
+}
 .d-flex{
   display: flex;
+}
+.wrap{
+  flex-wrap: wrap;
 }
 
 .just-center{
   justify-content: center;
 }
+.overflow{
+  overflow: hidden;
+}
 .homeImg{
   display: flex;
   position: sticky;
   width: 100%;
-  max-height: 91vh;
+  max-height: 90.2vh;
+}
+.homeTittle{
+  position: absolute;
+  font-size: 33px;
+  top:20%;
+  left: 36%;
+  font-family: 'Major Mono Display', monospace;
+  color: white;
+  z-index: 1;
+  animation-name: title;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  text-shadow: 2px 4px 4px #b8cce2;
+
+}
+@keyframes title {
+  0% {
+    opacity: 0;
+    transform: translateX(-80vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0vw);
+  }
+
+}
+.homeDescription{
+  width: 500px;
+  font-family: 'Major Mono Display', monospace;
+  position: absolute;
+  top: 45%;
+  left: 58%;
+  color: white;
+  z-index: 1;
+  text-align:left;
+  animation-name: description;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
+@keyframes description {
+  0% {
+    opacity: 0;
+    transform: translateY(15vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vw);
+  }
+}
+
+.greeting{
+  width: 90%;
+  text-align: right;
+  margin: 10px 0 0 0;
 }
 
 #addRecipe{
-  margin-top: 30px;
+  margin-top: 20px;
+  background-color: #212C32;
+  border-radius: 10px 0 10px 0;
+}
+#addRecipe:hover{
   background-color: #b55656;
+  color: white;
+  border-radius: 0 10px 0 10px ;
 }
 .uploadMain{
-  width: 98%;
+  width: 95%;
   display: flex;
+  justify-content: space-evenly;
   margin: 20px;
 }
 .previewField{
-  width: 45%;
+  margin: 5px;
+  width: 50%;
+  height: 430px;
+  overflow: auto;
   box-shadow: 0 0 16px 0 rgba(0,0,0,0.75);
   padding: 20px;
   background-color: #f5e9ee;
@@ -50,17 +126,18 @@
 
 }
 .upload{
-  width: 50%;
+  width: 35%;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 16px 0 rgba(0,0,0,0.75);
   padding: 20px;
-  background-color: #bee0e0;
+  background-color: #acc9d7;
 }
 .upload button{
   padding: 5px;
-  margin: 3px;
-  background-color: #3c6666;
+  margin: 3px 0;
+  background-color: #b55656;
   color: white;
   cursor: pointer;
 }
@@ -68,16 +145,23 @@
   background-color: #f5e9ee;
   color: black;
 }
+.ingredientsDiv{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.ingredientsDiv input{
+  width: 47%;
+}
 .error{
   color: red;
 }
 .nav{
   display: flex;
   justify-content: space-between;
-  width: 97.4%;
+  width: 97.05%;
   padding: 20px;
   background-color: #212C32;
-
 }
 .nav a{
   margin: 0 100px 0 100px;
@@ -86,12 +170,11 @@
   cursor: pointer;
 }
 .nav a:hover{
-  text-decoration: underline;
   color: yellow;
+  text-shadow: 2px 4px 4px #b8cce2;
 }
 .recipeCard{
-  width: 300px;
-  height: auto;
+  width: 270px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -201,6 +284,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.footer{
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40px;
 }
 
 .rating {

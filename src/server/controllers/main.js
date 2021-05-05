@@ -15,7 +15,7 @@ module.exports = {
             preparation.push(prep)
         })
         let newRecipe = new recipeDb
-        newRecipe.title = req.body.title[0]
+        newRecipe.title = req.body.title
         newRecipe.images = images
         newRecipe.ingredients = ingredients
         newRecipe.preparation = preparation
