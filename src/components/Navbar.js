@@ -1,7 +1,9 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({favoriteArr}) {
+
+
     return (
      <div className='nav'>
          <div>
@@ -9,7 +11,7 @@ function Navbar() {
          </div>
          <div>
              <Link className="link" to="/allrecipes">All Recipes</Link>
-             <Link className="link" to="/favorite">Favorite Recipes</Link>
+             <Link className="link" to="/favorite">Favorite Recipes ({favoriteArr.length})</Link>
              <Link className="link" to="/search">Search</Link>
              <Link className="link" to="/upload">Upload Recipe</Link>
          </div>

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
-function SingleRecipe() {
+function SingleRecipe({addFavorite}) {
     const { id } = useParams()
 
     const [recipe, setRecipe] = useState([])
     const [favoriteStatus, setStatus] = useState(false)
+
 
 
     useEffect(()=>{
@@ -18,20 +19,12 @@ function SingleRecipe() {
     },[])
 
 
-    function addFavorite(){
-        setStatus(true)
+    function setFavoriteStatus(){
         fetch('http://localhost:8080/favorite/' + id)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-            })
-    }
-    function removeFavorite(){
-        setStatus(false)
-        fetch('http://localhost:8080/removefavorite/' + id)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
+                addFavorite(data.allFav)
+                setStatus(data.rec.status)
             })
     }
 
@@ -40,8 +33,8 @@ function SingleRecipe() {
         <div>
             {
              !favoriteStatus ?
-             <img onClick={addFavorite} className="addToFavorite" src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-3/256/add-to-favorites-icon.png" alt=""/> :
-             <img onClick={removeFavorite} className="addToFavorite" src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-3/256/remove-from-favorites-icon.png" alt=""/>
+             <img onClick={setFavoriteStatus} className="addToFavorite" src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-3/256/add-to-favorites-icon.png" alt=""/> :
+             <img onClick={setFavoriteStatus} className="addToFavorite" src="https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-3/256/remove-from-favorites-icon.png" alt=""/>
             }
             {recipe.map(item =>
             <div className='singleRecipeCard mt-20' key={item._id}>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-
+import { useHistory } from "react-router-dom";
 
 function Recipes() {
 
@@ -8,9 +7,11 @@ function Recipes() {
     const [del, setDel] = useState(false)
     const [id, setId] = useState(0)
 
+    let history = useHistory();
+
 
     function goToRecipes(id){
-        window.location='http://localhost:3000/recipe/'+id;
+        history.push("/recipe/" +id);
     }
 
     useEffect(() => {
@@ -19,11 +20,10 @@ function Recipes() {
             .then(data => {
                 setAllRecipe(data)
             })
-    }, [allRecipe])
+    }, [])
 
     function deleteRecipe(){
         setDel(false)
-        console.log(id)
         fetch('http://localhost:8080/deleterecipes/'+id)
             .then(res => res.json())
             .then(data => {

@@ -1,5 +1,5 @@
 const recipeDb = require('../schemas/schema')
-const recipeFavoriteDB = require('../schemas/favoriteSchema')
+
 
 module.exports = {
     uploadRecipe: async (req, res) => {
@@ -53,36 +53,15 @@ module.exports = {
         res.send(recipe)
     },
     addFavorite: async (req, res) => {
-        await recipeDb.findOneAndUpdate({_id: req.params.id},
-            {$set: {status: true}},
-            {returnOriginal: false})
-        let newFavoriteRecipe = new recipeFavoriteDB
-        newFavoriteRecipe.recipeId = req.params.id
-        newFavoriteRecipe.save().then(() => {
-            res.send({error: false, message: 'Favorite was added!'})
-        }).catch(e => {
-            res.send({error: true, message: e})
-        })
+        const {id} = req.params
+        const recipe = await recipeDb.findOne({_id: id})
+        const updated = await recipeDb.findOneAndUpdate({_id: id}, {$set: {status: !recipe.status}}, {new: true})
+        const recipes = await recipeDb.find({status: true})
+        res.send({rec:updated, allFav: recipes})
     },
     showFavoritesRecipes: async (req, res) => {
-        let favorite = await recipeFavoriteDB.find()
-        let allFavorite = favorite.map(async (favorite, index) => {
-            return recipeDb.findOne({_id: favorite.recipeId})
-        })
-       Promise.all(allFavorite).then(data => {
-           res.send(data)})
-    },
-    RemoveFavorite: async (req, res) => {
-        await recipeDb.findOneAndUpdate({_id: req.params.id},
-            {$set: {status: false}},
-            {returnOriginal: false})
-        await recipeFavoriteDB.findOneAndDelete({recipeId: req.params.id})
-        let favorite = await recipeFavoriteDB.find()
-        let allFavorite = favorite.map(async (favorite, index) => {
-            return recipeDb.findOne({_id: favorite.recipeId})
-        })
-        Promise.all(allFavorite).then(data => {
-            res.send(data)})
+        const recipes = await recipeDb.find({status: true})
+        res.send(recipes)
     },
     RemoveRecipe: async (req, res) => {
         await recipeDb.findOneAndDelete({_id: req.params.id})

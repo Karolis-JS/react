@@ -10,7 +10,7 @@ import {
     CSSTransition
 } from "react-transition-group";
 
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import Upload from "./components/Upload";
 import Home from "./components/Home";
 import Recipes from "./components/Recipes";
@@ -26,12 +26,21 @@ import Search from "./components/Search";
 function App() {
 
     const [review, setReviews] = useState([])
+    const [allFavorite, setAllFavorite] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:8080/allfavorites')
+            .then(res => res.json())
+            .then(data => {
+                setAllFavorite(data)
+            })
+    }, [])
 
   return (
     <div className="App">
 
         <Router>
-            <Navbar />
+            <Navbar favoriteArr={allFavorite}/>
             <Switch>
                 <Route exact path="/">
                     <Home />
@@ -66,7 +75,7 @@ function App() {
                         >
                             <Switch location={location}>
                                 <Route path="/recipe/:id">
-                                    <SingleRecipe/>
+                                    <SingleRecipe addFavorite={(e) => setAllFavorite([...e])}/>
                                     <div className="reviewMain">
                                         <Review addReview={(e) => setReviews([e])}/>
                                         <UsersReview reviews={review}/>

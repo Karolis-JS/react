@@ -12,7 +12,6 @@ router.get('/recipe/:id', controller.findRecipe)
 router.get('/getreview/:id', controller.findreview)
 router.get('/favorite/:id', controller.addFavorite)
 router.get('/allfavorites', controller.showFavoritesRecipes)
-router.get('/removefavorite/:id', controller.RemoveFavorite)
 router.get('/deleterecipes/:id', controller.RemoveRecipe)
 router.post('/search', controller.searchByKeyword)
 

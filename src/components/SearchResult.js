@@ -1,6 +1,11 @@
+import {useHistory} from "react-router-dom";
+
 function SearchResult({result, keyword}) {
+
+    let history = useHistory();
+
     function goToRecipes(id){
-        window.location='http://localhost:3000/recipe/'+id;
+        history.push("/recipe/" +id);
     }
 
     return (

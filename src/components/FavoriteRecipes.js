@@ -4,8 +4,11 @@ import { useHistory } from "react-router-dom";
 
 function FavoriteRecipes() {
 
-    let history = useHistory();
     const [favorite, setFavorite] = useState([])
+
+
+    let history = useHistory();
+
 
     useEffect(() => {
         fetch('http://localhost:8080/allfavorites')
