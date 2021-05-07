@@ -1,19 +1,19 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
-
      <div className='nav'>
          <div>
-             <a href="http://localhost:3000/">Home</a>
+             <Link className="link" to="/">Home</Link>
          </div>
          <div>
-             <a href="http://localhost:3000/allrecipes">All Recipes</a>
-             <a href="http://localhost:3000/upload">Upload Recipe</a>
+             <Link className="link" to="/allrecipes">All Recipes</Link>
+             <Link className="link" to="/favorite">Favorite Recipes</Link>
+             <Link className="link" to="/search">Search</Link>
+             <Link className="link" to="/upload">Upload Recipe</Link>
          </div>
-
     </div>
-
     );
 }
 

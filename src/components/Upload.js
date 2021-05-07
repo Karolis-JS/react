@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-
+import UploadPreview from "./UploadPreview";
 
 function Upload() {
 
@@ -97,19 +97,13 @@ function Upload() {
                     <h3 className="error">{error}</h3>
                 </div>
 
-            <div className='previewField'>Preview window
-
-                <h2>{title}</h2>
-
-                {images.map((img, index) =>
-                    <img key={index} src={img} alt=""/>)}
-                <ol>
-                    {ingredients.map((data, index) => <li key={index}>{data.value}, {data.quantity}</li>)}
-                </ol>
-                <ol>
-                    {preparation.map((data, index) => <li key={index}>{data}</li>)}
-                </ol>
-
+            <div className='previewField mt-4'>Preview window
+                <UploadPreview
+                    title={title}
+                    images={images}
+                    ingredients={ingredients}
+                    preparation={preparation}
+                />
             </div>
 
         </div>

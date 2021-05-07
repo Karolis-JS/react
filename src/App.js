@@ -1,4 +1,5 @@
 import './App.css';
+import {faFontAwesomeLogoFull} from "@fortawesome/free-regular-svg-icons";
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,6 +19,8 @@ import SingleRecipe from "./components/SingleRecipe";
 import Review from "./components/Rewiev";
 import UsersReview from "./components/UsersReview";
 import Footer from "./components/Footer";
+import FavoriteRecipes from "./components/FavoriteRecipes";
+import Search from "./components/Search";
 
 
 function App() {
@@ -26,8 +29,9 @@ function App() {
 
   return (
     <div className="App">
-        <Navbar />
+
         <Router>
+            <Navbar />
             <Switch>
                 <Route exact path="/">
                     <Home />
@@ -40,6 +44,16 @@ function App() {
 
                 <Route path="/allrecipes">
                     <Recipes/>
+                    <Footer />
+                </Route>
+
+                <Route path="/search">
+                    <Search/>
+                    <Footer />
+                </Route>
+
+                <Route path="/favorite">
+                    <FavoriteRecipes/>
                     <Footer />
                 </Route>
 

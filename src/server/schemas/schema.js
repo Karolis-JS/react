@@ -23,6 +23,10 @@ const recipesSchema = new Schema({
         type: Array,
         required: false
     },
+    status: {
+        type: Boolean,
+        required: true
+    }
 })
 
 const recipeSchema = mongoose.model("recipesModel", recipesSchema)
