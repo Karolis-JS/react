@@ -59,7 +59,7 @@ function Search() {
                 </div>
                 <div className="keyword-div">
                    {keywords.map((item, index) =>
-                   <div onClick={() => removeKeyword(index)} className='keyword' key={index}><b>{item} <i  className="fas fa-times keyword-icon"></i></b>
+                   <div className='keyword' key={index}><b>{item} <i onClick={() => removeKeyword(index)}  className="fas fa-times keyword-icon"></i></b>
                    </div>)}
                 </div>
             </div>
