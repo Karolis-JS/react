@@ -1,7 +1,6 @@
 const validator = require('email-validator')
 module.exports = {
     checkRecipe: async (req, res, next) => {
-        console.log(req.body)
         function error(status, message) {
             return res.send({error: status, message: message})
         }

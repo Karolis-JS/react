@@ -12,7 +12,6 @@ function Search() {
 
     function setKeyword(e) {
         if (e.key === 'Enter') {
-            console.log(keywords)
             if (!!e.target.value) {
                 if (keywords.length === 0) {
                     setKeywords([...keywords, e.target.value])

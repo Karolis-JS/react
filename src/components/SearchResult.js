@@ -1,6 +1,4 @@
 function SearchResult({result, keyword}) {
-    console.log(result)
-
     function goToRecipes(id){
         window.location='http://localhost:3000/recipe/'+id;
     }
@@ -26,9 +24,6 @@ function SearchResult({result, keyword}) {
                 :
                 <h4 className='d-flex align-start'>Search result: 0</h4>
             }
-
-
-
         </div>
     );
 }

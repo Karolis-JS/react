@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
-function FavoriteRecipes(props) {
 
+function FavoriteRecipes() {
+
+    let history = useHistory();
     const [favorite, setFavorite] = useState([])
 
     useEffect(() => {
@@ -9,14 +12,11 @@ function FavoriteRecipes(props) {
             .then(res => res.json())
             .then(data => {
                 setFavorite(data)
-                console.log(data)
             })
     }, [])
 
     function goToRecipes(id){
-        console.log(id)
-        window.location='http://localhost:3000/recipe/'+id;
-
+        history.push("/recipe/" +id);
     }
 
     return (

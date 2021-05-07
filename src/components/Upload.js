@@ -24,7 +24,6 @@ function Upload() {
     }
 
     function addImage(){
-        console.log(imageRef.current.value)
         setImages([...images, imageRef.current.value])
         imageRef.current.value = ""
     }
@@ -54,7 +53,6 @@ function Upload() {
             body: JSON.stringify(data)
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.error) {
                     return setError(data.message)
                 }
