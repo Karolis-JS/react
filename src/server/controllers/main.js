@@ -76,7 +76,7 @@ module.exports = {
             let num = 0
             rec.ingredients.map(ingr => {
                 search.map(item => {
-                    if (item === ingr.value){
+                    if (item.toLowerCase() === ingr.value.toLowerCase()){
                         num++
                     }
                 })

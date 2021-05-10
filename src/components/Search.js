@@ -14,11 +14,11 @@ function Search() {
         if (e.key === 'Enter') {
             if (!!e.target.value) {
                 if (keywords.length === 0) {
-                    setKeywords([...keywords, e.target.value])
+                    setKeywords([...keywords, e.target.value.toLowerCase()])
                     e.target.value = ""
                 } else {
-                    if (!keywords.includes(e.target.value)) {
-                        setKeywords([...keywords, e.target.value])
+                    if (!keywords.includes(e.target.value.toLowerCase())) {
+                        setKeywords([...keywords, e.target.value.toLowerCase()])
                         e.target.value = ""
                     } else {
                         e.target.value = `${e.target.value} already used`
@@ -48,6 +48,7 @@ function Search() {
                 setResult(data)
             })
     }
+
 
     return (
         <div className="searchMain">
